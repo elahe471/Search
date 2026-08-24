@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "rnxxiLP9n3I=",
+  "success": true,
+  "projectFilePath": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SCARCE\\.nuget\\packages\\catalog.contracts\\1.0.0\\catalog.contracts.1.0.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.clients.elasticsearch\\9.5.0\\elastic.clients.elasticsearch.9.5.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.esql\\0.11.0\\elastic.esql.0.11.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.transport\\0.17.1\\elastic.transport.0.17.1.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\masstransit\\9.2.0\\masstransit.9.2.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\masstransit.abstractions\\9.2.0\\masstransit.abstractions.9.2.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\masstransit.rabbitmq\\9.2.0\\masstransit.rabbitmq.9.2.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.11\\microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\microsoft.extensions.apidescription.server\\10.0.0\\microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\microsoft.openapi\\2.7.5\\microsoft.openapi.2.7.5.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\rabbitmq.client\\7.2.1\\rabbitmq.client.7.2.1.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\swashbuckle.aspnetcore\\10.2.3\\swashbuckle.aspnetcore.10.2.3.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.2.3\\swashbuckle.aspnetcore.swagger.10.2.3.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.2.3\\swashbuckle.aspnetcore.swaggergen.10.2.3.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.2.3\\swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
