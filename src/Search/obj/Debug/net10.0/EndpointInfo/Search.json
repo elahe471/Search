@@ -12,7 +12,7 @@
         ],
         "parameters": [
           {
-            "name": "q",
+            "name": "text",
             "in": "query",
             "required": true,
             "schema": {

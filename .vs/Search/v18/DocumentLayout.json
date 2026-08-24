@@ -58,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 90,
+          "SelectedChildIndex": 89,
           "Children": [
             {
               "$type": "Bookmark",
@@ -406,19 +406,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Search",
-              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
-              "RelativeDocumentMoniker": "src\\Search\\Search.csproj",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj*",
-              "RelativeToolTip": "src\\Search\\Search.csproj*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-08-24T13:44:36.634Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ElasticSearchDependencyInjection.cs",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
@@ -449,8 +436,8 @@
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs",
               "RelativeDocumentMoniker": "src\\Search\\Program.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs*",
-              "RelativeToolTip": "src\\Search\\Program.cs*",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs",
+              "RelativeToolTip": "src\\Search\\Program.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAgwA8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-22T13:44:02.763Z",
@@ -462,11 +449,24 @@
               "Title": "SearchEndpoints.cs",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Endpoints\\SearchEndpoints.cs",
               "RelativeDocumentMoniker": "src\\Search\\Endpoints\\SearchEndpoints.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Endpoints\\SearchEndpoints.cs*",
-              "RelativeToolTip": "src\\Search\\Endpoints\\SearchEndpoints.cs*",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA1wA8AAAA0AAAAAAAAAA==",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Endpoints\\SearchEndpoints.cs",
+              "RelativeToolTip": "src\\Search\\Endpoints\\SearchEndpoints.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAiwCkAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-24T13:45:29.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Search",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
+              "RelativeDocumentMoniker": "src\\Search\\Search.csproj",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
+              "RelativeToolTip": "src\\Search\\Search.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-24T13:44:36.634Z",
               "EditorCaption": ""
             },
             {
