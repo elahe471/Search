@@ -1,11 +1,13 @@
-﻿namespace Search.Endpoints
+﻿using Search.Endpoints.Contracts;
+
+namespace Search.Endpoints
 {
     public static class SearchEndpoints
     {
         public static IEndpointRouteBuilder MapSearchEndpoints(this IEndpointRouteBuilder app)
         {
 
-            app.MapGet("/", SearchItems);
+            app.MapGet("/", Search);
 
             return app;
         }
@@ -23,29 +25,69 @@
         /// Search results are ranked by Elasticsearch _score,
         /// therefore matches in higher-boosted fields appear first.
         /// </summary>
-        static async Task<Results<Ok<IReadOnlyCollection<CatalogItemIndex>>, NotFound>> SearchItems(string text, ElasticsearchClient elasticsearch)
+        public static async Task<IResult> Search(
+     ElasticsearchClient elasticsearch,
+     [AsParameters] CatalogSearchRequest request,
+     CancellationToken cancellationToken)
         {
-            var response = await elasticsearch.SearchAsync<CatalogItemIndex>(s => s
-                .Indices(CatalogItemIndex.IndexName)
-                 .From(0)
-                 .Size(10)
-                 .Query(q => q
-                 .MultiMatch(mm => mm
-                 .Query(text)
-                 .Fields(new[]
-                 {
-                     "name^4",
-                     "catalogBrand^3",
-                     "catalogCategory^2",
-                     "description"
-                 })
-            .Fuzziness("AUTO"))));
+            if (request.Page < 1)
+            {
+                return TypedResults.BadRequest("Page must be greater than zero.");
+            }
 
-            if (response.IsValidResponse)
-                return TypedResults.Ok(response.Documents);
+            if (request.PageSize < 1 || request.PageSize > 100)
+            {
+                return TypedResults.BadRequest(
+                    "PageSize must be between 1 and 100.");
+            }
 
-            return TypedResults.NotFound();
+            if (string.IsNullOrWhiteSpace(request.Query))
+            {
+                return TypedResults.BadRequest(
+                    "Search query is required.");
+            }
 
+            var from = (request.Page - 1) * request.PageSize;
+
+            var response = await elasticsearch.SearchAsync<CatalogItemIndex>(
+                s => s
+                    .Indices(CatalogItemIndex.IndexName)
+                    .From(from)
+                    .Size(request.PageSize)
+                    .Query(q => q
+                        .MultiMatch(mm => mm
+                            .Query(request.Query)
+                            .Fields(new[]
+                            {
+                        "name^4",
+                        "catalogBrand^3",
+                        "catalogCategory^2",
+                        "description"
+                            })
+                            .Fuzziness(new Fuzziness("AUTO"))
+                        )
+                    ),
+                cancellationToken);
+
+            if (!response.IsValidResponse)
+            {
+                return TypedResults.Problem(
+                    "An error occurred while searching Elasticsearch.");
+            }
+
+            var totalCount = response.Total;
+
+            var totalPages = (int)Math.Ceiling(
+                totalCount / (double)request.PageSize);
+
+            var result = new CatalogSearchResponse<CatalogItemIndex>(
+                response.Documents.ToList(),
+                totalCount,
+                request.Page,
+                request.PageSize,
+                totalPages);
+
+            return TypedResults.Ok(result);
         }
     }
 }

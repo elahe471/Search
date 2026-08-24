@@ -1,7 +1,15 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+﻿# Build output
+bin/
+obj/
 
-/.vs/Search/FileContentIndex/f314d8f6-ee4d-42a1-b465-e23094ddabf1.vsidx
-/.vs/Search/FileContentIndex/a9508dd4-487f-4f93-be29-d1d89f999d41.vsidx
-/.vs/Search/FileContentIndex
+# Visual Studio
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
