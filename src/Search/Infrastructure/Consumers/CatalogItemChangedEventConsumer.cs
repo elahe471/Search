@@ -1,4 +1,6 @@
-﻿namespace Search.Infrastructure.Consumers;
+﻿using Catalog.Contracts.IntegrationEvents;
+
+namespace Search.Infrastructure.Consumers;
 
 public class CatalogItemChangedEventConsumer(ElasticsearchClient elasticsearchClient) : IConsumer<CatalogItemChangedEvent>
 {
@@ -18,7 +20,7 @@ public class CatalogItemChangedEventConsumer(ElasticsearchClient elasticsearchCl
                 Description = message.Description,
                 Id = message.Slug,
                 Name = message.Name,    
-                Url = message.DetialUrl,
+                Url = message.DetailUrl,
             }));
     }
 }

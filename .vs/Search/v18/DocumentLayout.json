@@ -3,20 +3,40 @@
   "WorkspaceRootPath": "D:\\SystemDesign\\Search\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\consumers\\catalogitemaddedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\consumers\\catalogitemaddedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\endpoints\\searchendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\endpoints\\searchendpoints.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\search.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\search.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\consumers\\catalogitemaddedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\consumers\\catalogitemaddedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\extensions\\elasticsearchdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\extensions\\elasticsearchdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\extensions\\brokerdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\extensions\\brokerdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\consumers\\catalogitemchangedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\consumers\\catalogitemchangedeventconsumer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\globalusings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\search.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -25,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\infrastructure\\extensions\\brokerdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|solutionrelative:src\\search\\infrastructure\\extensions\\brokerdependencyinjection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}|src\\Search\\Search.csproj|d:\\systemdesign\\search\\src\\search\\search.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
@@ -42,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 87,
+          "SelectedChildIndex": 90,
           "Children": [
             {
               "$type": "Bookmark",
@@ -390,13 +406,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Search",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
+              "RelativeDocumentMoniker": "src\\Search\\Search.csproj",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj*",
+              "RelativeToolTip": "src\\Search\\Search.csproj*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-24T13:44:36.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ElasticSearchDependencyInjection.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
+              "RelativeToolTip": "src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T11:44:10.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CatalogItemAddedEventConsumer.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
+              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
+              "RelativeToolTip": "src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwB8AAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T14:49:55.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs",
               "RelativeDocumentMoniker": "src\\Search\\Program.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs",
-              "RelativeToolTip": "src\\Search\\Program.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Program.cs*",
+              "RelativeToolTip": "src\\Search\\Program.cs*",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAgwA8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-08-22T13:44:02.763Z",
               "EditorCaption": ""
@@ -404,19 +459,55 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CatalogItemAddedEventConsumer.cs",
-              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
-              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
-              "RelativeToolTip": "src\\Search\\Infrastructure\\Consumers\\CatalogItemAddedEventConsumer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Title": "SearchEndpoints.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Endpoints\\SearchEndpoints.cs",
+              "RelativeDocumentMoniker": "src\\Search\\Endpoints\\SearchEndpoints.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Endpoints\\SearchEndpoints.cs*",
+              "RelativeToolTip": "src\\Search\\Endpoints\\SearchEndpoints.cs*",
+              "ViewState": "AgIAAAIAAAAAAAAAAAA1wA8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T14:49:55.734Z",
+              "WhenOpened": "2026-08-24T13:45:29.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
+              "Title": "BrokerDependencyInjection.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
+              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
+              "RelativeToolTip": "src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-22T14:57:33.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CatalogItemChangedEventConsumer.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemChangedEventConsumer.cs",
+              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Consumers\\CatalogItemChangedEventConsumer.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Consumers\\CatalogItemChangedEventConsumer.cs",
+              "RelativeToolTip": "src\\Search\\Infrastructure\\Consumers\\CatalogItemChangedEventConsumer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T08:35:45.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GlobalUsings.cs",
+              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\GlobalUsings.cs",
+              "RelativeDocumentMoniker": "src\\Search\\GlobalUsings.cs",
+              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\GlobalUsings.cs",
+              "RelativeToolTip": "src\\Search\\GlobalUsings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-24T08:35:21.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\appsettings.Development.json",
               "RelativeDocumentMoniker": "src\\Search\\appsettings.Development.json",
@@ -424,12 +515,11 @@
               "RelativeToolTip": "src\\Search\\appsettings.Development.json",
               "ViewState": "AgIAAAEAAAAAAAAAAAAAwAkAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-08-22T08:51:23.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-22T08:51:23.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Search",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
               "RelativeDocumentMoniker": "src\\Search\\Search.csproj",
@@ -441,20 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ElasticSearchDependencyInjection.cs",
-              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
-              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
-              "RelativeToolTip": "src\\Search\\Infrastructure\\Extensions\\ElasticSearchDependencyInjection.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAqwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T11:44:10.159Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\appsettings.json",
               "RelativeDocumentMoniker": "src\\Search\\appsettings.json",
@@ -462,25 +539,11 @@
               "RelativeToolTip": "src\\Search\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-08-22T11:56:58.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-22T11:56:58.438Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BrokerDependencyInjection.cs",
-              "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
-              "RelativeDocumentMoniker": "src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
-              "ToolTip": "D:\\SystemDesign\\Search\\src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
-              "RelativeToolTip": "src\\Search\\Infrastructure\\Extensions\\BrokerDependencyInjection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBZwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-22T14:57:33.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "Search.http",
               "DocumentMoniker": "D:\\SystemDesign\\Search\\src\\Search\\Search.http",
               "RelativeDocumentMoniker": "src\\Search\\Search.http",
@@ -488,8 +551,7 @@
               "RelativeToolTip": "src\\Search\\Search.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-08-22T08:51:35.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-08-22T08:51:35.842Z"
             }
           ]
         },

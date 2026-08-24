@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "rnxxiLP9n3I=",
+  "dgSpecHash": "ncONg1aayG8=",
   "success": true,
   "projectFilePath": "D:\\SystemDesign\\Search\\src\\Search\\Search.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\SCARCE\\.nuget\\packages\\catalog.contracts\\1.0.0\\catalog.contracts.1.0.0.nupkg.sha512",
+    "C:\\Users\\SCARCE\\.nuget\\packages\\catalog.contracts\\1.0.1\\catalog.contracts.1.0.1.nupkg.sha512",
     "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.clients.elasticsearch\\9.5.0\\elastic.clients.elasticsearch.9.5.0.nupkg.sha512",
     "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.esql\\0.11.0\\elastic.esql.0.11.0.nupkg.sha512",
     "C:\\Users\\SCARCE\\.nuget\\packages\\elastic.transport\\0.17.1\\elastic.transport.0.17.1.nupkg.sha512",

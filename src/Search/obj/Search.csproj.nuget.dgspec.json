@@ -55,7 +55,7 @@
           "dependencies": {
             "Catalog.Contracts": {
               "target": "Package",
-              "version": "[1.0.0, )"
+              "version": "[1.0.1, )"
             },
             "Elastic.Clients.Elasticsearch": {
               "target": "Package",

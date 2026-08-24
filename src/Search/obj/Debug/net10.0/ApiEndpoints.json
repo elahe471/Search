@@ -1,14 +1,14 @@
 [
   {
-    "ContainingType": "Program",
-    "Method": "\u003C\u003CMain\u003E$\u003Eg__SearchItems|0_0",
-    "RelativePath": "",
+    "ContainingType": "Search.Endpoints.SearchEndpoints",
+    "Method": "SearchItems",
+    "RelativePath": "api/v1/search/",
     "HttpMethod": "GET",
     "IsController": false,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "qr",
+        "Name": "q",
         "Type": "System.String",
         "IsRequired": true
       }
@@ -26,6 +26,9 @@
         "MediaTypes": [],
         "StatusCode": 404
       }
+    ],
+    "Tags": [
+      "Search APIs"
     ]
   }
 ]

@@ -19,46 +19,27 @@ public class CatalogItemAddedEventConsumer(ElasticsearchClient elasticsearchClie
             Description = message.Description,
             Url = message.DetailUrl,
             Name = message.Name,
-            Id = message.Slug,
+            Id = message.Slug, 
+            CreatedAt = DateTime.UtcNow
         };
 
-        //var result = await _elasticsearchClient.Indices.ExistsAsync(CatalogItemIndex.IndexName);
-
-        //if (!result.Exists)
-        //{
-        //    await _elasticsearchClient.Indices
-        //        .CreateAsync<CatalogItemIndex>(index: CatalogItemIndex.IndexName);
-        //}
-
-        //await _elasticsearchClient.IndexAsync(itemIndex, index: CatalogItemIndex.IndexName);
-
         var existsResponse =
-       await _elasticsearchClient.Indices.ExistsAsync(
-           CatalogItemIndex.IndexName);
+        await _elasticsearchClient.Indices.ExistsAsync(
+            CatalogItemIndex.IndexName);
 
         if (!existsResponse.Exists)
         {
-            var createResponse =
-                await _elasticsearchClient.Indices.CreateAsync(
+            await _elasticsearchClient.Indices.CreateAsync(
                     CatalogItemIndex.IndexName);
-
-            if (!createResponse.IsValidResponse)
-            {
-                throw new Exception(
-                    $"Create index failed: {createResponse.DebugInformation}");
-            }
         }
 
-        var indexResponse = await _elasticsearchClient.IndexAsync(
-            itemIndex,
-            x => x
-                .Index(CatalogItemIndex.IndexName)
-                .Id(itemIndex.Id));
+        await _elasticsearchClient.IndexAsync(
+           itemIndex,
+           x => x
+               .Index(CatalogItemIndex.IndexName)
+               .Id(itemIndex.Id));
 
-        if (!indexResponse.IsValidResponse)
-        {
-            throw new Exception(
-                $"Index document failed: {indexResponse.DebugInformation}");
-        }
+
+        
     }
 }

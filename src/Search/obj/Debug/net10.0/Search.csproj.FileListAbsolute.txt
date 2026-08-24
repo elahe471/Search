@@ -42,3 +42,5 @@ D:\SystemDesign\Search\src\Search\obj\Debug\net10.0\Search.genruntimeconfig.cach
 D:\SystemDesign\Search\src\Search\obj\Debug\net10.0\ref\Search.dll
 D:\SystemDesign\Search\src\Search\bin\Debug\net10.0\Elastic.Esql.dll
 D:\SystemDesign\Search\src\Search\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
+D:\SystemDesign\Search\src\Search\obj\Debug\net10.0\Search.sourcelink.json
+D:\SystemDesign\Search\src\Search\bin\Debug\net10.0\Catalog.Contracts.dll

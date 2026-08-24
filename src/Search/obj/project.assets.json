@@ -2,7 +2,7 @@
   "version": 4,
   "targets": {
     "net10.0": {
-      "Catalog.Contracts/1.0.0": {
+      "Catalog.Contracts/1.0.1": {
         "type": "package",
         "compile": {
           "lib/net10.0/Catalog.Contracts.dll": {}
@@ -228,13 +228,13 @@
     }
   },
   "libraries": {
-    "Catalog.Contracts/1.0.0": {
-      "sha512": "FcBxpIAueNjag/F39OZ8QOrvE/q4DIeJBquvVJP/nKn/fX0N5h+RS3I0+oQ9UZS4L3M3SSTXrwqaQ+PVI+odDg==",
+    "Catalog.Contracts/1.0.1": {
+      "sha512": "5+5Qs8Fq+krb53IK0zYuf9l0jwxIR0le3rQyegmLmm6moq0SuXZgRVepy01K7U8p3mMyFQOynZ1JYPWXh+5GRg==",
       "type": "package",
-      "path": "catalog.contracts/1.0.0",
+      "path": "catalog.contracts/1.0.1",
       "files": [
         ".nupkg.metadata",
-        "catalog.contracts.1.0.0.nupkg.sha512",
+        "catalog.contracts.1.0.1.nupkg.sha512",
         "catalog.contracts.nuspec",
         "lib/net10.0/Catalog.Contracts.dll"
       ]
@@ -779,7 +779,7 @@
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Catalog.Contracts >= 1.0.0",
+      "Catalog.Contracts >= 1.0.1",
       "Elastic.Clients.Elasticsearch >= 9.5.0",
       "MassTransit >= 9.2.0",
       "MassTransit.RabbitMQ >= 9.2.0",
@@ -842,7 +842,7 @@
         "dependencies": {
           "Catalog.Contracts": {
             "target": "Package",
-            "version": "[1.0.0, )"
+            "version": "[1.0.1, )"
           },
           "Elastic.Clients.Elasticsearch": {
             "target": "Package",

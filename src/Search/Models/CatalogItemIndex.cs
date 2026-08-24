@@ -11,5 +11,6 @@ public class CatalogItemIndex
     public required string CatalogCategory { get; set; }
     public required string CatalogBrand { get; set; }
     public required string Url { get; set; }
- 
+    public DateTime CreatedAt { get; set; } 
+
 }

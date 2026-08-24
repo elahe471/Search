@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v10.0": {
       "Search/1.0.0": {
         "dependencies": {
+          "Catalog.Contracts": "1.0.1",
           "Elastic.Clients.Elasticsearch": "9.5.0",
           "MassTransit": "9.2.0",
           "MassTransit.RabbitMQ": "9.2.0",
@@ -16,6 +17,14 @@
         },
         "runtime": {
           "Search.dll": {}
+        }
+      },
+      "Catalog.Contracts/1.0.1": {
+        "runtime": {
+          "lib/net10.0/Catalog.Contracts.dll": {
+            "assemblyVersion": "1.0.1.0",
+            "fileVersion": "1.0.1.0"
+          }
         }
       },
       "Elastic.Clients.Elasticsearch/9.5.0": {
@@ -148,6 +157,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Catalog.Contracts/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5+5Qs8Fq+krb53IK0zYuf9l0jwxIR0le3rQyegmLmm6moq0SuXZgRVepy01K7U8p3mMyFQOynZ1JYPWXh+5GRg==",
+      "path": "catalog.contracts/1.0.1",
+      "hashPath": "catalog.contracts.1.0.1.nupkg.sha512"
     },
     "Elastic.Clients.Elasticsearch/9.5.0": {
       "type": "package",

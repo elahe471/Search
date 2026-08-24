@@ -9,7 +9,6 @@ global using Elastic.Clients.Elasticsearch;
 
 // solution
 global using Search.Models;
-global using Catalog.Infrastructure.IntegrationEvents;
 global using Search.Infrastructure.Extensions;
 global using Elastic.Transport;
 global using Microsoft.Extensions.Options;

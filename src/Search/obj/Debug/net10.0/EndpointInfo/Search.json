@@ -5,14 +5,14 @@
     "version": "1.0"
   },
   "paths": {
-    "/": {
+    "/api/v1/search": {
       "get": {
         "tags": [
-          "Program"
+          "Search APIs"
         ],
         "parameters": [
           {
-            "name": "qr",
+            "name": "q",
             "in": "query",
             "required": true,
             "schema": {
@@ -76,6 +76,10 @@
           "url": {
             "type": "string",
             "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -88,7 +92,7 @@
   },
   "tags": [
     {
-      "name": "Program"
+      "name": "Search APIs"
     }
   ]
 }
