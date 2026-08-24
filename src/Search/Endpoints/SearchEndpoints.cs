@@ -1,4 +1,5 @@
-﻿using Search.Endpoints.Contracts;
+﻿using Elastic.Clients.Elasticsearch.QueryDsl;
+using Search.Endpoints.Contracts;
 
 namespace Search.Endpoints
 {
@@ -26,13 +27,14 @@ namespace Search.Endpoints
         /// therefore matches in higher-boosted fields appear first.
         /// </summary>
         public static async Task<IResult> Search(
-     ElasticsearchClient elasticsearch,
-     [AsParameters] CatalogSearchRequest request,
-     CancellationToken cancellationToken)
+        ElasticsearchClient elasticsearch,
+        [AsParameters] CatalogSearchRequest request,
+        CancellationToken cancellationToken)
         {
             if (request.Page < 1)
             {
-                return TypedResults.BadRequest("Page must be greater than zero.");
+                return TypedResults.BadRequest(
+                    "Page must be greater than zero.");
             }
 
             if (request.PageSize < 1 || request.PageSize > 100)
@@ -49,23 +51,53 @@ namespace Search.Endpoints
 
             var from = (request.Page - 1) * request.PageSize;
 
+            var filters = new List<Action<QueryDescriptor<CatalogItemIndex>>>();
+
+            if (!string.IsNullOrWhiteSpace(request.Brand))
+            {
+                filters.Add(q => q
+                    .Term(t => t
+                        .Field("catalogBrand.keyword")
+                        .Value(request.Brand)
+                        .CaseInsensitive(true)));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.Category))
+            {
+                filters.Add(q => q
+                    .Term(t => t
+                        .Field("catalogCategory.keyword")
+                        .Value(request.Category)
+                        .CaseInsensitive(true)));
+            }
+
             var response = await elasticsearch.SearchAsync<CatalogItemIndex>(
                 s => s
                     .Indices(CatalogItemIndex.IndexName)
                     .From(from)
                     .Size(request.PageSize)
                     .Query(q => q
-                        .MultiMatch(mm => mm
-                            .Query(request.Query)
-                            .Fields(new[]
+                        .Bool(b =>
+                        {
+                            b.Must(m => m
+                                .MultiMatch(mm => mm
+                                    .Query(request.Query)
+                                    .Fields(new[]
+                                    {
+                                "name^4",
+                                "catalogBrand^3",
+                                "catalogCategory^2",
+                                "description"
+                                    })
+                                    .Fuzziness(new Fuzziness("AUTO"))
+                                )
+                            );
+
+                            if (filters.Count > 0)
                             {
-                        "name^4",
-                        "catalogBrand^3",
-                        "catalogCategory^2",
-                        "description"
-                            })
-                            .Fuzziness(new Fuzziness("AUTO"))
-                        )
+                                b.Filter(filters.ToArray());
+                            }
+                        })
                     ),
                 cancellationToken);
 
