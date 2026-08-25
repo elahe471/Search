@@ -2,7 +2,7 @@
 
 namespace Search.Infrastructure.Consumers
 {
-    public class CatalogItemDeletedEventConsumer(ElasticsearchClient elasticsearchClient) : IConsumer<CatalogItemDeleteEvent>
+    public class CatalogItemDeletedEventConsumer(ElasticsearchClient elasticsearchClient) : IConsumer<CatalogItemDeletedEvent>
     {
         private readonly ElasticsearchClient _elasticsearchClient = elasticsearchClient;
 

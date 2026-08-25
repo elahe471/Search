@@ -8,7 +8,8 @@ namespace Search.Endpoints
         public static IEndpointRouteBuilder MapSearchEndpoints(this IEndpointRouteBuilder app)
         {
 
-            app.MapGet("/", Search);
+            app.MapGet("/", SearchItems);
+            app.MapGet("/suggestions", GetSuggestions);
 
             return app;
         }
@@ -26,7 +27,7 @@ namespace Search.Endpoints
         /// Search results are ranked by Elasticsearch _score,
         /// therefore matches in higher-boosted fields appear first.
         /// </summary>
-        public static async Task<IResult> Search(
+        public static async Task<IResult> SearchItems(
         ElasticsearchClient elasticsearch,
         [AsParameters] CatalogSearchRequest request,
         CancellationToken cancellationToken)
@@ -118,6 +119,57 @@ namespace Search.Endpoints
                 request.Page,
                 request.PageSize,
                 totalPages);
+
+            return TypedResults.Ok(result);
+        }
+        public static async Task<IResult> GetSuggestions(
+    ElasticsearchClient elasticsearch,
+    [AsParameters] CatalogSuggestionRequest request,
+    CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(request.Query))
+            {
+                return TypedResults.BadRequest(
+                    "Search query is required.");
+            }
+
+            if (request.Size < 1 || request.Size > 20)
+            {
+                return TypedResults.BadRequest(
+                    "Size must be between 1 and 20.");
+            }
+
+            var response = await elasticsearch.SearchAsync<CatalogItemIndex>(
+                s => s
+                    .Indices(CatalogItemIndex.IndexName)
+                    .Size(request.Size)
+                    .Query(q => q
+                        .MatchBoolPrefix(m => m
+                            .Field(x => x.Name)
+                            .Query(request.Query)
+                        )
+                    ),
+                cancellationToken);
+
+            if (!response.IsValidResponse)
+            {
+                var error =
+          response.ElasticsearchServerError?.Error?.Reason
+          ?? response.DebugInformation;
+
+                return TypedResults.Problem(
+                    title: "Elasticsearch suggestion search failed",
+                    detail: error);
+            }
+
+            var suggestions = response.Documents
+                                      .Select(x => new CatalogSuggestionItem(
+                                          x.Name,
+                                          x.CatalogCategory,
+                                          x.CatalogBrand,
+                                          x.Url)).ToArray();
+
+            var result = new CatalogSuggestionResponse(suggestions);
 
             return TypedResults.Ok(result);
         }
