@@ -12,6 +12,7 @@ namespace Search.Endpoints
             app.MapGet("/", SearchItems);
             app.MapGet("/suggestions", GetSuggestions);
             app.MapGet("/facets", GetFacets);
+            app.MapGet("/highlight", SearchWithHighlights);
 
             return app;
         }
@@ -271,6 +272,144 @@ namespace Search.Endpoints
 
 
             return TypedResults.Ok(new CatalogFacetsResponse(brands, categories));
+        }
+
+        public static async Task<IResult> SearchWithHighlights(
+    ElasticsearchClient elasticsearch,
+    [AsParameters] CatalogSearchRequest request,
+    CancellationToken cancellationToken)
+        {
+            if (request.Page < 1)
+            {
+                return TypedResults.BadRequest(
+                    "Page must be greater than zero.");
+            }
+
+            if (request.PageSize < 1 || request.PageSize > 100)
+            {
+                return TypedResults.BadRequest(
+                    "PageSize must be between 1 and 100.");
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Query))
+            {
+                return TypedResults.BadRequest(
+                    "Search query is required.");
+            }
+
+            var from = (request.Page - 1) * request.PageSize;
+
+            var filters = new List<Action<QueryDescriptor<CatalogItemIndex>>>();
+
+            if (!string.IsNullOrWhiteSpace(request.Brand))
+            {
+                filters.Add(q => q
+                    .Term(t => t
+                        .Field("catalogBrand.keyword")
+                        .Value(request.Brand)
+                        .CaseInsensitive(true)));
+            }
+
+            if (!string.IsNullOrWhiteSpace(request.Category))
+            {
+                filters.Add(q => q
+                    .Term(t => t
+                        .Field("catalogCategory.keyword")
+                        .Value(request.Category)
+                        .CaseInsensitive(true)));
+            }
+
+            var response = await elasticsearch.SearchAsync<CatalogItemIndex>(
+                s => s
+                    .Indices(CatalogItemIndex.IndexName)
+                    .From(from)
+                    .Size(request.PageSize)
+                    .Query(q => q
+                        .Bool(b =>
+                        {
+                            b.Must(m => m
+                                .MultiMatch(mm => mm
+                                    .Query(request.Query)
+                                    .Fields(new[]
+                                    {
+                                "name^4",
+                                "catalogBrand^3",
+                                "catalogCategory^2",
+                                "description"
+                                    })
+                                    .Fuzziness(new Fuzziness("AUTO"))
+                                )
+                            );
+
+                            if (filters.Count > 0)
+                            {
+                                b.Filter(filters.ToArray());
+                            }
+                        })
+                    )
+                    .Highlight(h => h.PreTags("<mark>").PostTags("</mark>")
+                    .AddField("name",f => f.NumberOfFragments(0))
+                    .AddField("description",f => f.FragmentSize(150).NumberOfFragments(1))), cancellationToken);
+
+            if (!response.IsValidResponse)
+            {
+                return TypedResults.Problem(
+                    "An error occurred while searching Elasticsearch.");
+            }
+
+            var items = response.Hits
+                .Where(hit => hit.Source is not null)
+                .Select(hit =>
+                {
+                    var item = hit.Source!;
+
+                    string? highlightedName = null;
+                    string? highlightedDescription = null;
+
+                    if (hit.Highlight is not null)
+                    {
+                        if (hit.Highlight.TryGetValue(
+                            "name",
+                            out var nameHighlights))
+                        {
+                            highlightedName =
+                                nameHighlights.FirstOrDefault();
+                        }
+
+                        if (hit.Highlight.TryGetValue(
+                            "description",
+                            out var descriptionHighlights))
+                        {
+                            highlightedDescription =
+                                descriptionHighlights.FirstOrDefault();
+                        }
+                    }
+
+                    return new CatalogHighlightedSearchItem(
+                        item.Name,
+                        item.Description,
+                        item.CatalogCategory,
+                        item.CatalogBrand,
+                        item.Url,
+                        highlightedName,
+                        highlightedDescription);
+                })
+                .ToArray();
+
+            var totalCount = response.Total;
+
+            var totalPages = (int)Math.Ceiling(
+                totalCount / (double)request.PageSize);
+
+            var result =
+                new CatalogSearchResponse<CatalogHighlightedSearchItem>(
+                    items,
+                    totalCount,
+                    request.Page,
+                    request.PageSize,
+                    totalPages);
+
+            return TypedResults.Ok(result);
         }
     }
 
