@@ -1,5 +1,6 @@
 ﻿using Elastic.Clients.Elasticsearch.QueryDsl;
 using Search.Endpoints.Contracts;
+using Search.Infrastructure.Helper;
 
 namespace Search.Endpoints
 {
@@ -10,6 +11,7 @@ namespace Search.Endpoints
 
             app.MapGet("/", SearchItems);
             app.MapGet("/suggestions", GetSuggestions);
+            app.MapGet("/facets", GetFacets);
 
             return app;
         }
@@ -122,6 +124,13 @@ namespace Search.Endpoints
 
             return TypedResults.Ok(result);
         }
+        /// <summary>
+        /// Returns catalog autocomplete suggestions using prefix-based search
+        /// on product names.
+        ///
+        /// Designed for search-as-you-type scenarios and returns
+        /// product name, category, brand, and URL.
+        /// </summary>
         public static async Task<IResult> GetSuggestions(
     ElasticsearchClient elasticsearch,
     [AsParameters] CatalogSuggestionRequest request,
@@ -153,13 +162,8 @@ namespace Search.Endpoints
 
             if (!response.IsValidResponse)
             {
-                var error =
-          response.ElasticsearchServerError?.Error?.Reason
-          ?? response.DebugInformation;
-
                 return TypedResults.Problem(
-                    title: "Elasticsearch suggestion search failed",
-                    detail: error);
+                    title: "Elasticsearch suggestion search failed");
             }
 
             var suggestions = response.Documents
@@ -173,5 +177,102 @@ namespace Search.Endpoints
 
             return TypedResults.Ok(result);
         }
+        /// <summary>
+        /// Returns catalog facets for brands and categories based on the search query.
+        ///
+        /// Uses Elasticsearch terms aggregations on keyword fields to group
+        /// matching catalog items and return the number of items in each bucket.
+        ///
+        /// This endpoint returns aggregation data only and does not return
+        /// catalog documents.
+        /// </summary>
+        public static async Task<IResult> GetFacets(
+    ElasticsearchClient elasticsearch,
+    [AsParameters] CatalogFacetsRequest request,
+    CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(request.Query))
+            {
+                return TypedResults.BadRequest(
+                    "Search query is required.");
+            }
+
+            if (request.Size < 1 || request.Size > 100)
+            {
+                return TypedResults.BadRequest(
+                    "Size must be between 1 and 100.");
+            }
+
+            var response = await elasticsearch.SearchAsync<CatalogItemIndex>(
+                s => s
+                    .Indices(CatalogItemIndex.IndexName)
+
+                    // We only need aggregations, not documents
+                    .Size(0)
+
+                    .Query(q => q
+                        .MultiMatch(mm => mm
+                            .Query(request.Query)
+                            .Fields(new[]
+                            {
+                        "name^4",
+                        "catalogBrand^3",
+                        "catalogCategory^2",
+                        "description"
+                            })
+                            .Fuzziness(new Fuzziness("AUTO"))
+                        )
+                    )
+
+                    .Aggregations(a => a
+
+                        .Add("brands", ag => ag
+                            .Terms(t => t
+                                .Field("catalogBrand.keyword")
+                                .Size(request.Size)
+                            )
+                        )
+
+                        .Add("categories", ag => ag
+                            .Terms(t => t
+                                .Field("catalogCategory.keyword")
+                                .Size(request.Size)
+                            )
+                        )
+                    ),
+                cancellationToken);
+
+            if (!response.IsValidResponse)
+            {
+                return TypedResults.Problem(
+                    "An error occurred while getting catalog facets.");
+            }
+
+            var brandAggregation =
+                response.Aggregations?.GetStringTerms("brands");
+
+            var categoryAggregation =
+                response.Aggregations?.GetStringTerms("categories");
+
+
+            var brands = brandAggregation?.Buckets
+       .Select(bucket => new CatalogFacetItem(
+           BucketKeyHelper.Get(bucket.Key),
+           bucket.DocCount))
+       .ToArray()
+       ?? [];
+
+            var categories = categoryAggregation?.Buckets
+                .Select(bucket => new CatalogFacetItem(
+                    BucketKeyHelper.Get(bucket.Key),
+                    bucket.DocCount))
+                .ToArray()
+                ?? [];
+
+
+            return TypedResults.Ok(new CatalogFacetsResponse(brands, categories));
+        }
     }
+
+
 }
