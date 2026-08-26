@@ -1,157 +1,134 @@
-# Catalog Search Service
+# Search Service
 
-This project provides asynchronous catalog indexing and full-text product search using **RabbitMQ**, **MassTransit**, and **Elasticsearch**.
+A lightweight catalog search microservice built with **.NET 10**, **Elasticsearch**, **RabbitMQ**, and **MassTransit**.
+
+The service consumes catalog integration events, keeps Elasticsearch synchronized, and exposes search-focused APIs for an e-commerce catalog.
 
 ## Architecture
 
 ```text
 Catalog Service
       |
-      | Integration Event
+      | Integration Events
       v
-RabbitMQ
+   RabbitMQ
       |
       v
-Search Consumer
+ Search Service
       |
       v
-Elasticsearch
+ Elasticsearch
 ```
 
-When a catalog item is created or updated, the Catalog service publishes an integration event to RabbitMQ.  
-The Search service consumes the event and stores the searchable document in Elasticsearch.
+Catalog changes are published asynchronously through RabbitMQ.
+The Search service consumes those events and creates, updates, or deletes the corresponding Elasticsearch documents.
 
-This keeps catalog operations independent from search indexing and allows indexing to run asynchronously.
+## Features
 
----
+* Full-text search across multiple catalog fields
+* Field boosting for better relevance
+* Automatic fuzziness for common typing mistakes
+* Pagination
+* Case-insensitive Brand and Category filters
+* Autocomplete / search suggestions
+* Brand and Category facets using Elasticsearch aggregations
+* Highlighted search results
+* Elasticsearch health checks
+* Catalog item create/update/delete synchronization through integration events
 
 ## Search Strategy
 
-The product search uses Elasticsearch `MultiMatch` across multiple fields:
+The main search uses Elasticsearch `MultiMatch` with different relevance weights:
+
+| Field       | Boost |
+| ----------- | ----: |
+| Name        |    4x |
+| Brand       |    3x |
+| Category    |    2x |
+| Description |    1x |
 
 ```csharp
-var response = await elasticsearch.SearchAsync<CatalogItemIndex>(s => s
-    .Indices(CatalogItemIndex.IndexName)
-    .From(0)
-    .Size(10)
-    .Query(q => q
-        .MultiMatch(mm => mm
-            .Query(searchText)
-            .Fields(new[]
-            {
-                "name^4",
-                "catalogBrand^3",
-                "catalogCategory^2",
-                "description"
-            })
-            .Fuzziness(new Fuzziness("AUTO"))
-        )
-    )
-);
+.MultiMatch(mm => mm
+    .Query(request.Query)
+    .Fields(new[]
+    {
+        "name^4",
+        "catalogBrand^3",
+        "catalogCategory^2",
+        "description"
+    })
+    .Fuzziness(new Fuzziness("AUTO"))
+)
 ```
 
-### Field Priority
+This keeps product-name matches more relevant while still searching brand, category, and description.
 
-| Field | Boost |
-|---|---:|
-| Name | 4x |
-| Brand | 3x |
-| Category | 2x |
-| Description | 1x |
+## API Endpoints
 
-A match in the product name is considered more relevant than the same match in the description.
+| Endpoint                         | Purpose                                      |
+| -------------------------------- | -------------------------------------------- |
+| `GET /api/v1/search`             | Full-text search with pagination and filters |
+| `GET /api/v1/search/suggestions` | Search-as-you-type autocomplete              |
+| `GET /api/v1/search/facets`      | Brand and Category aggregation counts        |
+| `GET /api/v1/search/highlight`   | Search results with highlighted matches      |
+| `GET /health/live`               | API liveness                                 |
+| `GET /health/ready`              | Dependency readiness                         |
 
-For example, when searching for `iphone`:
+## Search Filters
 
-```text
-Apple iPhone 16 Pro
-```
-
-should rank higher than:
-
-```text
-USB-C Charger
-Description: Compatible with iPhone
-```
-
----
-
-## Why MultiMatch?
-
-Several Elasticsearch query types were considered:
-
-- `Term` — exact values and filters
-- `Match` — full-text search on one field
-- `Fuzzy` — typo-tolerant term matching
-- `Prefix` — autocomplete scenarios
-- `Range` — price/date filtering
-- `Bool` — combines search and filters
-- `MultiMatch` — full-text search across multiple fields
-
-`MultiMatch` was selected because the search box needs to search **Name, Brand, Category, and Description at the same time** while still ranking the most relevant products first.
-
-`AUTO` fuzziness is enabled to tolerate common typing mistakes such as:
-
-```text
-iphone -> ipone
-samsung -> samsng
-```
-
----
-
-## Search vs Filter
-
-Full-text search is responsible for relevance:
-
-```text
-Name
-Brand
-Category
-Description
-```
-
-Structured constraints should be added as filters:
-
-```text
-Brand
-Category
-Price
-Availability
-```
-
-The future query structure will therefore be:
+Brand and Category are applied as filters, so they restrict the result set without affecting relevance scoring.
 
 ```text
 Bool Query
-├── MultiMatch
-└── Filters
+├── Must
+│   └── MultiMatch
+└── Filter
     ├── Brand
-    ├── Category
-    ├── Price
-    └── Availability
+    └── Category
 ```
 
-This keeps relevance scoring separate from filtering.
+Filtering is case-insensitive.
 
----
+## Autocomplete
 
-## Future Improvements
+Autocomplete uses `MatchBoolPrefix` on product names for search-as-you-type scenarios.
 
-Possible future additions:
+Suggestion responses include product name, category, brand, and URL.
 
-- Autocomplete
-- Highlighting
-- Brand/category aggregations
-- Price filters
-- Synonyms
-- Semantic or hybrid search
+## Facets
 
----
+The facets endpoint uses Elasticsearch `terms` aggregations on keyword fields to return Brand and Category counts.
+
+## Highlighting
+
+Highlighting is exposed through a dedicated endpoint so the main search endpoint stays lightweight.
+
+```html
+Apple <mark>iPhone</mark> 16 Pro
+```
+
+## Event Synchronization
+
+The Search service handles:
+
+```text
+CatalogItemAddedEvent
+CatalogItemChangedEvent
+CatalogItemDeletedEvent
+```
+
+Deleted catalog items are removed from Elasticsearch using the slug as the document ID.
 
 ## Tech Stack
 
-- .NET
-- Elasticsearch
-- RabbitMQ
-- MassTransit
-- Docker
+* .NET 10
+* Elasticsearch
+* RabbitMQ
+* MassTransit
+* Docker
+* ASP.NET Core Minimal APIs
+
+## Next Steps
+
+Future improvements may include sorting, custom analyzers, synonyms, and semantic or hybrid search.
+::: 
