@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31903.59
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.12021.73 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F28C6CB-F041-4562-B3D5-B621343F679F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Search", "src\Search\Search.csproj", "{9E23AF5A-0F2A-4AC1-8D21-90C92BC61721}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{D8537ED7-21C5-4784-9DB5-ED293E003E09}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\SCARCE\Downloads\Search-as-a-Service-Technical-Notes.pdf = C:\Users\SCARCE\Downloads\Search-as-a-Service-Technical-Notes.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
